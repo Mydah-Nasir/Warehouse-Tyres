@@ -10,17 +10,8 @@ from PIL import Image, ImageEnhance, ImageFilter
 from io import BytesIO
 import google.generativeai as genai
 
-from dotenv import load_dotenv
-
-load_dotenv()
-api_key = None
-try:
-    api_key = st.secrets["GEMINI_API_KEY"]
-except Exception:
-    api_key = os.getenv("GEMINI_API_KEY")
-
-if api_key:
-    genai.configure(api_key=api_key)
+api_key = st.secrets["GEMINI_API_KEY"]
+genai.configure(api_key=api_key)
 
 GEMINI_MODEL = "gemini-2.5-flash"
 
